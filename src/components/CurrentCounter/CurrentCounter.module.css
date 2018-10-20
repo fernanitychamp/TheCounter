@@ -1,0 +1,14 @@
+.CurrentCounter {
+    background-color: lightsalmon;
+}
+
+.CurrentCounter header{
+    margin: 0;
+    padding: 0;
+  }
+  
+.CurrentCounter header h2 {
+    margin: 0;
+    padding: 4px 0;
+    color: #eee;
+}
