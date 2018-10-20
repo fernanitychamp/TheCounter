@@ -2,13 +2,15 @@ import React from 'react';
 
 import Styles from './ControlCounter.module.css';
 
+import Button from '../UI/Button/Button';
+
 
 const controlCounter = (props) => (
     <div className={Styles.ControlCounter}>
-        <button onClick={(ev) => props.clickedAction(ev, {type: 'inc'})}>Incrementar</button>
-        <button onClick={(ev) => props.clickedAction(ev, {type: 'dec'})}>Decrementar</button>
-        <button onClick={(ev) => props.clickedAction(ev, {type: 'add', value: 5})}>Añadir 5</button>
-        <button onClick={(ev) => props.clickedAction(ev, {type: 'substract', value: 10})}>Restart 10</button>
+        <Button clicked={props.clickedAction} payload={{type: 'inc'}}>Incrementar</Button>
+        <Button clicked={props.clickedAction} payload={{type: 'dec'}}>Decrementar</Button>
+        <Button clicked={props.clickedAction} payload={{type: 'add', value: 5}}>Sumar 5</Button>
+        <Button clicked={props.clickedAction} payload={{type: 'substract', value: 10}}>Restar 10</Button>
     </div>
 )
 
