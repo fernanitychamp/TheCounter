@@ -11,13 +11,13 @@ class Counter extends React.Component {
     }
 
     actionHandler = (ev, action) => {
-        if (action.type === 'inc') {
+        if (action && action.type === 'inc') {
             this.setState(prevState => ({counter: prevState.counter + 1}))
-        } else if (action.type === 'dec') {
+        } else if (action && action.type === 'dec') {
             this.setState(prevState => ({counter: prevState.counter - 1}))
-        } else if (action.type === 'add' && action.value) {
+        } else if (action && action.type === 'add' && action.value) {
             this.setState(prevState => ({counter: prevState.counter + action.value}))
-        } else if (action.type === 'substract' && action.value) {
+        } else if (action && action.type === 'substract' && action.value) {
             this.setState(prevState => ({counter: prevState.counter - action.value}))
         } else {
             console.log('accion desconocida')
