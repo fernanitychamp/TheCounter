@@ -11,6 +11,6 @@
     cursor: pointer;
 }
 
-.ControlCounter:hover {
+.Button:hover {
     background-color: #e48c3e;
 }
