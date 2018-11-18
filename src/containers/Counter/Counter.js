@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import * as actionTypes from '../../store/actions';
+
 import Styles from './Counter.module.css';
 
 import CurrentCounter from '../../components/CurrentCounter/CurrentCounter';
@@ -46,7 +48,7 @@ class Counter extends React.Component {
                 <CurrentCounter counter={this.props.ctr} />
                 <ControlCounter clickedAction={this.actionHandler} />
                 <hr />
-                <button onClick={this.props.onStoreResult}>Store Results</button>
+                <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Results</button>
                 <ul>
                     {this.props.storedResult.map(res => 
                         <li key={res.id} onClick={() => this.props.onDeleteResult(res.id)}>{res.value}</li>
@@ -59,16 +61,16 @@ class Counter extends React.Component {
 
 export default connect(state => {
     return {
-        ctr: state.counter,
-        storedResult: state.results
+        ctr: state.ctr.counter,
+        storedResult: state.res.results
     }
 }, dispatch => {
     return {
-        onIncrementHandler: () => dispatch({type: 'INCREMENT'}),
-        onDecrementHandler: () => dispatch({type: 'DECREMENT'}),
-        onAddHandler: (v) => dispatch({type: 'ADD', value: v}),
-        onSubstractHandler: (v) => dispatch({type: 'SUBTRACT', value: v}),
-        onStoreResult: () => dispatch({type: 'STORE_RESULT'}),
-        onDeleteResult: (selectedId) => dispatch({type: 'DELETE_RESULT', payload: {id: selectedId}})
+        onIncrementHandler: () => dispatch({type: actionTypes.INCREMENT}),
+        onDecrementHandler: () => dispatch({type: actionTypes.DECREMENT}),
+        onAddHandler: (v) => dispatch({type: actionTypes.ADD, value: v}),
+        onSubstractHandler: (v) => dispatch({type: actionTypes.SUBTRACT, value: v}),
+        onStoreResult: (res) => dispatch({type: actionTypes.STORE_RESULT, result: res}),
+        onDeleteResult: (selectedId) => dispatch({type: actionTypes.DELETE_RESULT, payload: {id: selectedId}})
     }
 })(Counter);
