@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import * as actionTypes from '../../store/actions';
+import * as actionCreators from '../../store/actions';
 
 import Styles from './Counter.module.css';
 
@@ -66,11 +66,11 @@ export default connect(state => {
     }
 }, dispatch => {
     return {
-        onIncrementHandler: () => dispatch({type: actionTypes.INCREMENT}),
-        onDecrementHandler: () => dispatch({type: actionTypes.DECREMENT}),
-        onAddHandler: (v) => dispatch({type: actionTypes.ADD, value: v}),
-        onSubstractHandler: (v) => dispatch({type: actionTypes.SUBTRACT, value: v}),
-        onStoreResult: (res) => dispatch({type: actionTypes.STORE_RESULT, result: res}),
-        onDeleteResult: (selectedId) => dispatch({type: actionTypes.DELETE_RESULT, payload: {id: selectedId}})
+        onIncrementHandler: () => dispatch(actionCreators.increment()),
+        onDecrementHandler: () => dispatch(actionCreators.decrement()),
+        onAddHandler: (v) => dispatch(actionCreators.add(v)),
+        onSubstractHandler: (v) => dispatch(actionCreators.substract(v)),
+        onStoreResult: (res) => dispatch(actionCreators.store_res(res)),
+        onDeleteResult: (selectedId) => dispatch(actionCreators.delete_res(selectedId))
     }
 })(Counter);
