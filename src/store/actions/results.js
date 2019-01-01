@@ -8,8 +8,12 @@ const _saveResult = (res) => {
 }
 
 export const store_res = (res) => {
-    return dispatch => { // despliega una funcion asincrona despues de 2 segundos
+    return (dispatch, getState) => { // despliega una funcion asincrona despues de 2 segundos
         setTimeout(() => {
+            // un segundo parametro lo recibe thunk, 
+            // util para saber como va el store en cualquier funcion asincrona
+            const oldCounter = getState().ctr.counter
+            console.log(oldCounter)
             dispatch(_saveResult(res))
         }, 2000)
     }
